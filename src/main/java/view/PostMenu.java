@@ -1,11 +1,10 @@
 package view;
 
-import model.Label;
 import model.Post;
 
 import java.util.Scanner;
 
-import static repository.JsonPostRepositoryImpl.*;
+import static repository.Implementation.JsonPostRepositoryImpl.*;
 
 public class PostMenu {
     public static void Menu(){
@@ -17,14 +16,14 @@ public class PostMenu {
 
         Scanner sc = new Scanner(System.in);
         int enteredOption = sc.nextInt();
-        switch (enteredOption){
+        /*switch (enteredOption){
             case 1:
                 addPost(new Post());
             case 2:
                 updatePost(new Post());
             case 3:
                 removePost(new Post().getId());
-        }
+        }*/
     }
 }
 

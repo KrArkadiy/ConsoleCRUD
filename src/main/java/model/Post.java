@@ -3,17 +3,29 @@ package model;
 import java.util.List;
 
 public class Post {
-    private int id;
+    private Integer id;
+
     private String content;
+
     private Long created;
+
     private Long updated;
+
     private List<Label> labels;
+
+    public List<Label> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(List<Label> labels) {
+        this.labels = labels;
+    }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -39,13 +51,5 @@ public class Post {
 
     public void setUpdated(Long updated) {
         this.updated = updated;
-    }
-
-    public List<Label> getLabels() {
-        return labels;
-    }
-
-    public void setLabels(List<Label> labels) {
-        this.labels = labels;
     }
 }

@@ -1,10 +1,8 @@
 package view;
 
 import model.Label;
-import repository.JsonLabelRepositoryImpl;
-import repository.LabelRepository;
 
-import static repository.JsonLabelRepositoryImpl.*;
+import static repository.Implementation.JsonLabelRepositoryImpl.*;
 
 import java.util.Scanner;
 
@@ -18,13 +16,13 @@ public class LabelMenu {
 
         Scanner sc = new Scanner(System.in);
         int enteredOption = sc.nextInt();
-        switch (enteredOption){
+        /*switch (enteredOption){
             case 1:
                 addLabel(new Label());
             case 2:
                 updateLabel(new Label());
             case 3:
                 removeLabel(new Label().getId());
-        }
+        }*/
     }
 }

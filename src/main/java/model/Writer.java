@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 
 public class Writer {
-    private int id;
+    private Integer id;
     private String name;
     private List<Post> posts;
 
@@ -11,7 +11,7 @@ public class Writer {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

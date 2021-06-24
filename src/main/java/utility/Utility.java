@@ -1,6 +1,7 @@
 package utility;
 
 import java.io.*;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class Utility {
     }
 
     public static String getPath(String fileName){
-        String path = pathToFile+fileName;
+        String path = Paths.get("").toAbsolutePath() + pathToFile+fileName;
         return path;
     }
 }
