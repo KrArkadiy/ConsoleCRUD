@@ -8,6 +8,8 @@ import utility.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class JsonLabelRepositoryImpl implements LabelRepository {
 
@@ -15,20 +17,10 @@ public class JsonLabelRepositoryImpl implements LabelRepository {
 
     public Label getById(Integer integer) {
         List<Label> labels = deserialization(Utility.read(FILE_NAME));
+        Label label = labels.stream().filter((s)->s.getId().equals(integer)).findFirst().get();
 
-        Label current = null;
+        return label;
 
-        for(Label label : labels) {
-            if(label.getId().equals(integer)){
-                current = label;
-                break;
-            }
-        }
-
-        if(current != null){
-            return current;
-        }
-       throw new NullPointerException();
     }
 
     @Override
@@ -52,15 +44,9 @@ public class JsonLabelRepositoryImpl implements LabelRepository {
     public void deleteById(Integer integer) {
         List<Label> labels = deserialization(Utility.read(FILE_NAME));
 
-        Label current = null;
+        Label deleted = labels.stream().filter((s)->s.getId().equals(integer)).findFirst().get();
+        labels.remove(deleted);
 
-        for(Label label : labels){
-            if(label.getId().equals(integer)) {
-                current = label;
-                break;
-            }
-        }
-        labels.remove(current);
         Utility.writeList(FILE_NAME, serialization(labels));
     }
 

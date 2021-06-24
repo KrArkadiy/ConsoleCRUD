@@ -8,7 +8,7 @@ import java.util.List;
 public class JsonWriterRepositoryImpl implements WriterRepository {
 
     @Override
-    public Writer getById(Long aLong) {
+    public Writer getById(Integer integer) {
         return null;
     }
 
@@ -28,7 +28,7 @@ public class JsonWriterRepositoryImpl implements WriterRepository {
     }
 
     @Override
-    public void deleteById(Long aLong) {
+    public void deleteById(Integer integer) {
 
     }
 }
