@@ -7,7 +7,13 @@ public class Writer {
     private String name;
     private List<Post> posts;
 
-    public int getId() {
+    public Writer(Integer id, String name, List<Post> posts){
+        this.id = id;
+        this.name = name;
+        this.posts = posts;
+    }
+
+    public Integer getId() {
         return id;
     }
 

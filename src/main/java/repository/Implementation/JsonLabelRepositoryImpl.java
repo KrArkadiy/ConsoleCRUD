@@ -1,15 +1,16 @@
 package repository.Implementation;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import model.Label;
 
+import model.Writer;
 import repository.LabelRepository;
 import utility.Utility;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class JsonLabelRepositoryImpl implements LabelRepository {
 
@@ -17,7 +18,7 @@ public class JsonLabelRepositoryImpl implements LabelRepository {
 
     public Label getById(Integer integer) {
         List<Label> labels = deserialization(Utility.read(FILE_NAME));
-        Label label = labels.stream().filter((s)->s.getId().equals(integer)).findFirst().get();
+        Label label = labels.stream().filter((s) -> s.getId().equals(integer)).findFirst().get();
 
         return label;
 
@@ -44,16 +45,16 @@ public class JsonLabelRepositoryImpl implements LabelRepository {
     public void deleteById(Integer integer) {
         List<Label> labels = deserialization(Utility.read(FILE_NAME));
 
-        Label deleted = labels.stream().filter((s)->s.getId().equals(integer)).findFirst().get();
+        Label deleted = labels.stream().filter((s) -> s.getId().equals(integer)).findFirst().get();
         labels.remove(deleted);
 
         Utility.writeList(FILE_NAME, serialization(labels));
     }
 
-    public List<Label> deserialization(List<String> data){
+    public List<Label> deserialization(List<String> data) {
         List<Label> labels = new ArrayList<>();
 
-        for(String str : data){
+        for (String str : data) {
             Label label = new Gson().fromJson(str, Label.class);
             labels.add(label);
         }
@@ -61,17 +62,18 @@ public class JsonLabelRepositoryImpl implements LabelRepository {
         return labels;
     }
 
-    public String serialization(Label label){
+    public String serialization(Label label) {
         String jsonString = new Gson().toJson(label);
         return jsonString;
     }
 
-    public  List<String> serialization(List<Label> labels){
+    public List<String> serialization(List<Label> labels) {
         List<String> serialized = new ArrayList<>();
-        for(Label label : labels){
+        for (Label label : labels) {
             String str = new Gson().toJson(label);
             serialized.add(str);
         }
         return serialized;
     }
 }
+
