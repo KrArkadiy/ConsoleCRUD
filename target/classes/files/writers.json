@@ -1,1 +1,1 @@
-{"id" : 1, "name" :  "Pushkin", "posts" : ["asd", "nasa", "carting"]}
+{"id":2,"name":"Bulgakov","posts":[{"id":2,"content":"Dog\u0027s Heart","created":1,"updated":2,"labels":[{"id":2,"name":"name"},{"id":3,"name":"name1"}]},{"id":3,"content":"master and margarita","created":2,"updated":3,"labels":[{"id":2,"name":"name"},{"id":3,"name":"name1"}]}]}

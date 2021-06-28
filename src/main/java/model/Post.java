@@ -13,6 +13,14 @@ public class Post {
 
     private List<Label> labels;
 
+    public Post(Integer id, String content, Long created, Long updated, List<Label> labels){
+        this.id = id;
+        this.content = content;
+        this.created = created;
+        this.updated = updated;
+        this.labels = labels;
+    }
+
     public List<Label> getLabels() {
         return labels;
     }
@@ -21,7 +29,7 @@ public class Post {
         this.labels = labels;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

@@ -18,14 +18,14 @@ public class JsonWriterRepositoryImpl implements WriterRepository {
 
     @Override
     public Writer getById(Integer integer) {
-        List<Writer> writers = deserialization(Utility.read(FILE_NAME));
+        List<Writer> writers = arrayDeserialization(Utility.read(FILE_NAME));
         Writer writer = writers.stream().filter((s) -> s.getId().equals(integer)).findFirst().get();
         return writer;
     }
 
     @Override
     public List<Writer> getAll() {
-        List<Writer> writers = deserialization(Utility.read(FILE_NAME));
+        List<Writer> writers = arrayDeserialization(Utility.read(FILE_NAME));
         return writers;
     }
 
@@ -42,14 +42,14 @@ public class JsonWriterRepositoryImpl implements WriterRepository {
 
     @Override
     public void deleteById(Integer integer) {
-        List<Writer> writers = deserialization(Utility.read(FILE_NAME));
+        List<Writer> writers = arrayDeserialization(Utility.read(FILE_NAME));
         Writer deleted = writers.stream().filter((s) -> s.getId().equals(integer)).findFirst().get();
         writers.remove(deleted);
 
         Utility.writeList(FILE_NAME, serialization(writers));
     }
 
-    public List<Writer> deserialization(List<String> data) {
+    /*public List<Writer> deserialization(List<String> data) {
         List<Writer> writers = new ArrayList<>();
 
         for (String str : data) {
@@ -57,7 +57,7 @@ public class JsonWriterRepositoryImpl implements WriterRepository {
             writers.add(writer);
         }
         return writers;
-    }
+    }*/
 
     public String serialization(Writer writer) {
         String jsonString = new Gson().toJson(writer);
@@ -73,14 +73,13 @@ public class JsonWriterRepositoryImpl implements WriterRepository {
         return serializedList;
     }
 
-    public void arrayDeserialization(){
-        String string = "{\"id\" : 1, \"name\" :  \"Pushkin\", \"posts\" : [\"asd\", \"nasa\", \"carting\"]}";
-        JsonParser parser = new JsonParser();
-        JsonObject jsonObject = (JsonObject) parser.parse(string);
-        JsonArray posts = (JsonArray) jsonObject.get("posts");
-        for(JsonElement str : posts){
-            System.out.println(str);
+    public List<Writer> arrayDeserialization(List<String> data) {
+        List<Writer> writers = new ArrayList<>();
+        Type targetClassType = new TypeToken<ArrayList<Writer>>() {}.getType();
+        for (String writer : data) {
+            writers = new Gson().fromJson(writer, targetClassType);
         }
+        return writers;
     }
 }
 
