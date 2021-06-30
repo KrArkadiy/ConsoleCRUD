@@ -13,11 +13,9 @@ public class Post {
 
     private List<Label> labels;
 
-    public Post(Integer id, String content, Long created, Long updated, List<Label> labels){
+    public Post(Integer id, String content, List<Label> labels){
         this.id = id;
         this.content = content;
-        this.created = created;
-        this.updated = updated;
         this.labels = labels;
     }
 
