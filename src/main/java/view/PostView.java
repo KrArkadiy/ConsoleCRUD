@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 
 public class PostView extends BasicView{
-
     PostController postController;
     LabelController labelController;
 
@@ -21,8 +20,7 @@ public class PostView extends BasicView{
             "5. Удалить post\n" +
             "6. Выход";
 
-
-    void getById() {
+    public void getById() {
         System.out.println(menuMessage);
         Integer id = sc.nextInt();
         try {
@@ -34,7 +32,7 @@ public class PostView extends BasicView{
         }
     }
 
-    void getAll() {
+    public void getAll() {
         System.out.println(menuMessage);
         try {
             System.out.println(postController.getAll());
@@ -45,7 +43,7 @@ public class PostView extends BasicView{
         }
     }
 
-    void deleteById() {
+    public void deleteById() {
         System.out.println(menuMessage);
         System.out.println("Введите id удаляемого post");
         Integer id = sc.nextInt();
@@ -58,7 +56,7 @@ public class PostView extends BasicView{
         }
     }
 
-    void save() {
+    public void save() {
         System.out.println(menuMessage);
         System.out.println("Введите содержание post");
         String content = sc.nextLine();
@@ -73,7 +71,7 @@ public class PostView extends BasicView{
         }
     }
 
-    void update() {
+    public void update() {
         System.out.println(menuMessage);
         System.out.println("Введите содержание post");
         String content = sc.nextLine();

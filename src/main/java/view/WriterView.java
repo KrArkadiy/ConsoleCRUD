@@ -12,17 +12,23 @@ public class WriterView extends BasicView{
     WriterController writerController;
     PostController postController;
 
-    private final String menuMessage = "Выберете действие над label:\n" +
-            "1. Получение label по номеру\n" +
-            "2. Вывести список всех label\n" +
-            "3. Добавить label\n" +
-            "4. Редактировать label\n" +
-            "5. Удалить label\n" +
+    private final String menuMessage = "Выберете действие над writer:\n" +
+            "1. Получение writer по номеру\n" +
+            "2. Вывести список всех writer\n" +
+            "3. Добавить writer\n" +
+            "4. Редактировать writer\n" +
+            "5. Удалить writer\n" +
             "6. Выход";
 
+    public WriterView(WriterController writerController, Scanner sc) {
+        this.writerController = writerController;
+        this.sc = sc;
+    }
 
-    void getById() {
+
+    public void getById() {
         System.out.println(menuMessage);
+        System.out.println("Введите id искомого writer");
         Integer id = sc.nextInt();
         try {
             writerController.getById(id);
@@ -33,7 +39,7 @@ public class WriterView extends BasicView{
         }
     }
 
-    void getAll() {
+    public void getAll() {
         System.out.println(menuMessage);
         try {
             System.out.println(writerController.getAll());
@@ -44,7 +50,7 @@ public class WriterView extends BasicView{
         }
     }
 
-    void deleteById() {
+    public void deleteById() {
         System.out.println(menuMessage);
         System.out.println("Введите id удаляемого writer");
         Integer id = sc.nextInt();
@@ -57,7 +63,7 @@ public class WriterView extends BasicView{
         }
     }
 
-    void save() {
+    public void save() {
         System.out.println(menuMessage);
         System.out.println("Введите имя writer");
         String name = sc.nextLine();
@@ -72,7 +78,7 @@ public class WriterView extends BasicView{
         }
     }
 
-    void update() {
+    public void update() {
         System.out.println(menuMessage);
         System.out.println("Введите имя writer");
         String name = sc.nextLine();

@@ -16,7 +16,7 @@ public abstract class BasicView {
 
     abstract void update();
 
-    void show(){
+    public void show(){
         boolean isExit = false;
         String option = sc.next();
         while (true){

@@ -19,8 +19,13 @@ public class LabelView extends BasicView {
             "5. Удалить label\n" +
             "6. Выход";
 
+    public LabelView(LabelController labelController, Scanner sc){
+        this.labelController = labelController;
+        this.sc = sc;
+    }
 
-    void getById() {
+
+    public void getById() {
         System.out.println(menuMessage);
         Integer id = sc.nextInt();
         try {
@@ -32,7 +37,7 @@ public class LabelView extends BasicView {
         }
     }
 
-    void getAll() {
+    public void getAll() {
         System.out.println(menuMessage);
         try {
             System.out.println(labelController.getAll());
@@ -43,7 +48,7 @@ public class LabelView extends BasicView {
         }
     }
 
-    void deleteById() {
+    public void deleteById() {
         System.out.println(menuMessage);
         System.out.println("Введите id удаляемого post");
         Integer id = sc.nextInt();
@@ -56,7 +61,7 @@ public class LabelView extends BasicView {
         }
     }
 
-    void save() {
+    public void save() {
         System.out.println(menuMessage);
         System.out.println("Введите имя label");
         String name = sc.nextLine();
@@ -71,7 +76,7 @@ public class LabelView extends BasicView {
         }
     }
 
-    void update() {
+    public void update() {
         System.out.println(menuMessage);
         System.out.println("Введите имя label");
         String name = sc.nextLine();

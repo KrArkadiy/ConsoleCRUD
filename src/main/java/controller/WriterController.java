@@ -7,29 +7,30 @@ import java.util.List;
 
 public class WriterController {
 
-    JsonWriterRepositoryImpl jsonWriterRepository;
 
-    public WriterController(JsonWriterRepositoryImpl jsonWriterRepository) {
-        this.jsonWriterRepository = jsonWriterRepository;
+    WriterController writerController;
+
+    public WriterController() {
+
     }
 
     public List<Writer> getAll(){
-        return jsonWriterRepository.getAll();
+        return writerController.getAll();
     }
 
     public Writer getById(Integer aInteger){
-        return jsonWriterRepository.getById(aInteger);
+        return writerController.getById(aInteger);
     }
 
     public void save(Writer writer){
-        jsonWriterRepository.save(writer);
+        writerController.save(writer);
     }
 
     public void update(Writer writer){
-        jsonWriterRepository.update(writer);
+        writerController.update(writer);
     }
 
     public void deleteById(Integer aInteger){
-        jsonWriterRepository.deleteById(aInteger);
+        writerController.deleteById(aInteger);
     }
 }

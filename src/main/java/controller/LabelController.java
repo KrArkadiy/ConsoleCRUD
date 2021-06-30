@@ -9,29 +9,29 @@ import java.util.Scanner;
 
 public class LabelController {
 
-    JsonLabelRepositoryImpl jsonLabelRepository;
+    LabelController labelController;
 
-    public LabelController(JsonLabelRepositoryImpl jsonLabelRepository) {
-        this.jsonLabelRepository = jsonLabelRepository;
+    public LabelController() {
+
     }
 
     public List<Label> getAll(){
-        return jsonLabelRepository.getAll();
+        return labelController.getAll();
     }
 
     public Label getById(Integer aInteger){
-        return jsonLabelRepository.getById(aInteger);
+        return labelController.getById(aInteger);
     }
 
     public void save(Label label){
-        jsonLabelRepository.save(label);
+        labelController.save(label);
     }
 
     public void update(Label label){
-        jsonLabelRepository.update(label);
+        labelController.update(label);
     }
 
     public void deleteById(Integer iInteger){
-        jsonLabelRepository.deleteById(iInteger);
+        labelController.deleteById(iInteger);
     }
 }
