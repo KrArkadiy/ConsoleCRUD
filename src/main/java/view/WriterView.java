@@ -46,7 +46,7 @@ public class WriterView extends BasicView{
 
     void deleteById() {
         System.out.println(menuMessage);
-        System.out.println("Введите id удаляемого post");
+        System.out.println("Введите id удаляемого writer");
         Integer id = sc.nextInt();
         try {
             writerController.deleteById(id);
