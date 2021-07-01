@@ -20,6 +20,11 @@ public class PostView extends BasicView{
             "5. Удалить post\n" +
             "6. Выход";
 
+    public PostView(Scanner sc, PostController postController) {
+        this.sc = sc;
+        this.postController = postController;
+    }
+
     public void getById() {
         System.out.println(menuMessage);
         Integer id = sc.nextInt();

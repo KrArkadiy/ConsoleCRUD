@@ -3,35 +3,35 @@ package controller;
 import model.Label;
 import repository.Implementation.JsonLabelRepositoryImpl;
 import repository.Implementation.JsonLabelRepositoryImpl.*;
+import repository.LabelRepository;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class LabelController {
 
-    LabelController labelController;
-
+    LabelRepository jsonLabelRepository = new JsonLabelRepositoryImpl();
     public LabelController() {
 
     }
 
     public List<Label> getAll(){
-        return labelController.getAll();
+        return jsonLabelRepository.getAll();
     }
 
     public Label getById(Integer aInteger){
-        return labelController.getById(aInteger);
+        return jsonLabelRepository.getById(aInteger);
     }
 
     public void save(Label label){
-        labelController.save(label);
+        jsonLabelRepository.save(label);
     }
 
     public void update(Label label){
-        labelController.update(label);
+        jsonLabelRepository.update(label);
     }
 
     public void deleteById(Integer iInteger){
-        labelController.deleteById(iInteger);
+        jsonLabelRepository.deleteById(iInteger);
     }
 }

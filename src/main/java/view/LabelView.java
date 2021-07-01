@@ -2,6 +2,7 @@ package view;
 
 import controller.LabelController;
 import model.Label;
+import repository.Implementation.JsonLabelRepositoryImpl;
 
 import static repository.Implementation.JsonLabelRepositoryImpl.*;
 
@@ -24,13 +25,18 @@ public class LabelView extends BasicView {
         this.sc = sc;
     }
 
+    public LabelView(Scanner sc, LabelController labelController) {
+        this.sc = sc;
+        this.labelController = labelController;
+    }
+
 
     public void getById() {
         System.out.println(menuMessage);
         Integer id = sc.nextInt();
         try {
-            labelController.getById(id);
-            System.out.println("Операция успешно выполнена");
+            Label label = labelController.getById(id);
+            System.out.println(label.getName());
         }catch (Exception e){
             System.out.println(e.getMessage());
             System.out.println("Возникла ошибка");

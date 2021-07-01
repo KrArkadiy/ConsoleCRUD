@@ -1,36 +1,38 @@
 package controller;
 
 import model.Writer;
+import repository.Implementation.JsonPostRepositoryImpl;
 import repository.Implementation.JsonWriterRepositoryImpl;
+import repository.WriterRepository;
 
 import java.util.List;
 
 public class WriterController {
 
 
-    WriterController writerController;
+    WriterRepository jsonWriterRepository = new JsonWriterRepositoryImpl();
 
     public WriterController() {
 
     }
 
     public List<Writer> getAll(){
-        return writerController.getAll();
+        return jsonWriterRepository.getAll();
     }
 
     public Writer getById(Integer aInteger){
-        return writerController.getById(aInteger);
+        return jsonWriterRepository.getById(aInteger);
     }
 
     public void save(Writer writer){
-        writerController.save(writer);
+        jsonWriterRepository.save(writer);
     }
 
     public void update(Writer writer){
-        writerController.update(writer);
+        jsonWriterRepository.update(writer);
     }
 
     public void deleteById(Integer aInteger){
-        writerController.deleteById(aInteger);
+        jsonWriterRepository.deleteById(aInteger);
     }
 }

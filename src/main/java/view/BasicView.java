@@ -1,8 +1,12 @@
 package view;
 
+import controller.WriterController;
+
 import java.util.Scanner;
 
 public abstract class BasicView {
+
+    WriterController writerController;
 
     protected Scanner sc;
 
@@ -41,7 +45,7 @@ public abstract class BasicView {
                     break;
             }
             if (isExit){
-                break;
+                return;
             }
         }
     }

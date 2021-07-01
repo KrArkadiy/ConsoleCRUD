@@ -3,6 +3,7 @@ package view;
 import controller.PostController;
 import controller.WriterController;
 import model.Writer;
+import repository.Implementation.JsonWriterRepositoryImpl;
 
 import java.util.Scanner;
 
@@ -20,10 +21,15 @@ public class WriterView extends BasicView{
             "5. Удалить writer\n" +
             "6. Выход";
 
-    public WriterView(WriterController writerController, Scanner sc) {
+    public WriterView(Scanner sc, WriterController writerController) {
+        this.sc = sc;
+        this.writerController = writerController;
+    }
+
+    /*public WriterView(WriterController writerController, Scanner sc) {
         this.writerController = writerController;
         this.sc = sc;
-    }
+    }*/
 
 
     public void getById() {
@@ -31,8 +37,8 @@ public class WriterView extends BasicView{
         System.out.println("Введите id искомого writer");
         Integer id = sc.nextInt();
         try {
-            writerController.getById(id);
-            System.out.println("Операция успешно выполнена");
+            Writer writer = writerController.getById(id);
+            System.out.println(writer);
         }catch (Exception e){
             System.out.println(e.getMessage());
             System.out.println("Возникла ошибка");
