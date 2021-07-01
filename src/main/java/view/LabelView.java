@@ -33,8 +33,9 @@ public class LabelView extends BasicView {
 
     public void getById() {
         System.out.println(menuMessage);
-        Integer id = sc.nextInt();
+
         try {
+            Integer id = sc.nextInt();
             Label label = labelController.getById(id);
             System.out.println(label.getName());
         }catch (Exception e){
