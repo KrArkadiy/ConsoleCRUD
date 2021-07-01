@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public abstract class BasicView {
 
-    WriterController writerController;
-
     protected Scanner sc;
 
     abstract void getById();

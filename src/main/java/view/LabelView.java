@@ -12,6 +12,7 @@ public class LabelView extends BasicView {
 
     LabelController labelController;
 
+
     private final String menuMessage = "Выберете действие над label:\n" +
             "1. Получение label по номеру\n" +
             "2. Вывести список всех label\n" +
@@ -24,7 +25,6 @@ public class LabelView extends BasicView {
         this.sc = sc;
         this.labelController = labelController;
     }
-
 
     public void getById() {
         System.out.println(menuMessage);
