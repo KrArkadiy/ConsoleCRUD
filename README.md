@@ -1,10 +1,10 @@
 # ConsoleCRUD
 В данном репозитории реализовано консольное CRUD приложение, которое имеет следующие сущности:
 
-Writer
-Post
-Label
-PostStatus
+<p>Writer
+<p>Post
+<p>Label
+<p>PostStatus
 
 В качестве хранилища данных использованы текстовые файлы:
 writers.json, posts.json, labels.json
