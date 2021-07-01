@@ -29,8 +29,8 @@ public class PostView extends BasicView{
         System.out.println(menuMessage);
         Integer id = sc.nextInt();
         try {
-            postController.getById(id);
-            System.out.println("Операция успешно выполнена");
+            Post post = postController.getById(id);
+            System.out.println(post);
         }catch (Exception e){
             System.out.println(e.getMessage());
             System.out.println("Возникла ошибка");

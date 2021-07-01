@@ -20,11 +20,6 @@ public class LabelView extends BasicView {
             "5. Удалить label\n" +
             "6. Выход";
 
-    public LabelView(LabelController labelController, Scanner sc){
-        this.labelController = labelController;
-        this.sc = sc;
-    }
-
     public LabelView(Scanner sc, LabelController labelController) {
         this.sc = sc;
         this.labelController = labelController;
@@ -33,9 +28,8 @@ public class LabelView extends BasicView {
 
     public void getById() {
         System.out.println(menuMessage);
-
+        Integer id = sc.nextInt();
         try {
-            Integer id = sc.nextInt();
             Label label = labelController.getById(id);
             System.out.println(label.getName());
         }catch (Exception e){

@@ -12,7 +12,8 @@ public class ConsoleFunctionality {
     private String options = "Выберите сущность\n" +
             "1. Label\n" +
             "2. Writer\n" +
-            "3. Post\n";
+            "3. Post\n" +
+            "4. Exit\n";
 
     //creating controllers
     LabelController labelController = new LabelController();
@@ -25,18 +26,27 @@ public class ConsoleFunctionality {
     BasicView postView = new PostView(sc, postController);
 
     public void run() {
-        System.out.println(options);
-        String option = sc.next();
-        switch (option) {
-            case "1":
-                labelView.show();
+        boolean isExit = false;
+        while (true) {
+            System.out.println(options);
+            String option = sc.next();
+            switch (option) {
+                case "1":
+                    labelView.show();
+                    break;
+                case "2":
+                    writerView.show();
+                    break;
+                case "3":
+                    postView.show();
+                    break;
+                case "4":
+                    isExit = true;
+                    break;
+            }
+            if (isExit) {
                 break;
-            case "2":
-                writerView.show();
-                break;
-            case "3":
-                postView.show();
-                break;
+            }
         }
     }
 }
