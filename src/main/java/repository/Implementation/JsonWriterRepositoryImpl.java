@@ -7,67 +7,62 @@ import repository.WriterRepository;
 import utility.Utility;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class JsonWriterRepositoryImpl implements WriterRepository {
-    private final static String FILE_NAME = "writers.json";
-    JsonLabelRepositoryImpl a = new JsonLabelRepositoryImpl();
 
+    private final String FILE_NAME = "writers.json";
+    private final Gson gson = new Gson();
 
     @Override
     public Writer getById(Integer integer) {
-        List<Writer> writers = arrayDeserialization(Utility.read(FILE_NAME));
-        Writer writer = writers.stream().filter((s) -> s.getId().equals(integer)).findFirst().get();
-        return writer;
+        return arrayDeserialization(Utility.read(FILE_NAME))
+                .stream()
+                .filter((s)->s.getId().equals(integer))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public List<Writer> getAll() {
-        List<Writer> writers = arrayDeserialization(Utility.read(FILE_NAME));
-        return writers;
+        return arrayDeserialization(Utility.read(FILE_NAME));
     }
 
     @Override
-    public void save(Writer writer) {
+    public Writer save(Writer writer) {
+        writer.setId(generateNewId());
         Utility.write(FILE_NAME, serialization(writer));
+        return writer;
     }
 
     @Override
-    public void update(Writer writer) {
-        deleteById(writer.getId());
-        save(writer);
+    public Writer update(Writer writer) {
+        List<Writer> writers = arrayDeserialization(Utility.read(FILE_NAME));
+        writers.forEach(w->{
+            if(w.getId().equals(writer.getId())){
+                w.setName(writer.getName());
+            }
+        });
+        Utility.writeList(FILE_NAME, serialization(writers));
+        return writer;
     }
 
     @Override
     public void deleteById(Integer integer) {
         List<Writer> writers = arrayDeserialization(Utility.read(FILE_NAME));
-        Writer deleted = writers.stream().filter((s) -> s.getId().equals(integer)).findFirst().get();
-        writers.remove(deleted);
-
+        writers.removeIf(w -> w.getId().equals(integer));
         Utility.writeList(FILE_NAME, serialization(writers));
     }
 
-    /*public List<Writer> deserialization(List<String> data) {
-        List<Writer> writers = new ArrayList<>();
-
-        for (String str : data) {
-            Writer writer = new Gson().fromJson(str, Writer.class);
-            writers.add(writer);
-        }
-        return writers;
-    }*/
-
     public String serialization(Writer writer) {
-        String jsonString = new Gson().toJson(writer);
+        String jsonString = gson.toJson(writer);
         return jsonString;
     }
 
     public List<String> serialization(List<Writer> data) {
         List<String> serializedList = new ArrayList<>();
         for (Writer writer : data) {
-            String json = new Gson().toJson(writer);
+            String json = gson.toJson(writer);
             serializedList.add(json);
         }
         return serializedList;
@@ -77,9 +72,15 @@ public class JsonWriterRepositoryImpl implements WriterRepository {
         List<Writer> writers = new ArrayList<>();
         Type targetClassType = new TypeToken<ArrayList<Writer>>() {}.getType();
         for (String writer : data) {
-            writers = new Gson().fromJson(writer, targetClassType);
+            writers = gson.fromJson(writer, targetClassType);
         }
         return writers;
+    }
+
+    public Integer generateNewId(){
+        Writer maxIdWriter = arrayDeserialization(Utility.read(FILE_NAME)).stream().max(Comparator.comparing(Writer::getId))
+                .orElse(null);
+        return Objects.nonNull(maxIdWriter) ? maxIdWriter.getId() + 1 : 1;
     }
 }
 
