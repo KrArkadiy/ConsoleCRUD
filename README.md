@@ -23,4 +23,4 @@
 
 <hr>
 
-Технологии: Java, Gson, Maven.
+Технологии: JavaSE8, Gson, Maven.
